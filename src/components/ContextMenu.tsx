@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import React, { useState, ReactNode, MouseEvent } from "react";
+import ReactDOM from "react-dom";
 
 
 interface MenuItem {
@@ -11,6 +12,7 @@ interface MenuItem {
 
 interface MenuGroup {
     groupName: string;
+    groupIcon?: React.ReactNode;
     items: MenuItem[];
 }
 
@@ -19,9 +21,11 @@ interface ContextMenuProps {
     menuGroups: MenuGroup[];
     submenuVisible: { submenuLabel: string, visible: Boolean };
     setSubmenuVisible: any;
+
+    className?: string;
 }
 
-const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuGroups, submenuVisible, setSubmenuVisible }) => {
+const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuGroups, submenuVisible, setSubmenuVisible, className }) => {
     const [menuVisible, setMenuVisible] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
 
@@ -85,13 +89,14 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuGroups, submenu
     //     return () => document.removeEventListener("keydown", handleKeyDown);
     // }, [menuVisible, submenuVisible, focusedIndex]);
 
+    const combinedClassName = `${className ?? ""} relative`;
     return (
-        <div onContextMenu={handleContextMenu} onClick={handleClickOutside} style={{ position: "relative" }}>
+        <div onContextMenu={handleContextMenu} onClick={handleClickOutside} className={combinedClassName}>
             {/* Render children as right-clickable element */}
             {children}
 
             {/* Render custom context menu if visible */}
-            {menuVisible && (
+            {menuVisible && ReactDOM.createPortal(
                 <div
                     className="p-2.5 rounded-lg border-solid border border-slate-500 bg-zinc-900 w-64 max-h-80"
                     style={{ position: "absolute", top: menuPosition.y, left: menuPosition.x, zIndex: 1000 }}
@@ -123,7 +128,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ children, menuGroups, submenu
                         ))}
                     </ul>
                 </div>
-            )}
+            , document.body)}
         </div>
     );
 };

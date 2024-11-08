@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import { Mouse } from 'lucide-react'
+import { LaptopMinimal, Mouse } from 'lucide-react'
 import Popup from './components/Popup';
 import Table from './components/table';
 
@@ -7,9 +7,15 @@ import Table from './components/table';
 
 function Main() {
 
+
+    // Firebase Setup
+    const tableData = require("./assets/sample.json");
+
+
     return (
-        <div>
-            <Popup>
+        <div className="w-screen min-h-screen bg-neutral-900 text-gray-300 flex flex-col items-center">
+
+            {/* <Popup>
                 <h2 className="text-2xl font-semibold mb-2 text-white">Welcome!</h2>
 
                 <div className="flex flex-row justify-center align-center">
@@ -24,11 +30,11 @@ function Main() {
                     <Cookie size={20} />
                     <p className="max-w-prose w-11/12 mb-6">This app uses cookies to remember your settings.</p>
                 </div>
-            </Popup>
+            </Popup> */}
 
 
 
-            <Table></Table>
+            <Table data={tableData} />
 
         </div>
     );

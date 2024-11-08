@@ -1,7 +1,6 @@
-import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from "./main.jsx";
-import HierarchyView from "./HierarchyView/";
+import HierarchyView from "./hierarchyView/hierarchyView.jsx";
 
 
 function App() {
