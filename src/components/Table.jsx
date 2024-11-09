@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContextMenu from './ContextMenu.tsx'
 import { RotateCcw, ArrowDownAZ, ArrowUpAZ, ArrowDown01, ArrowUp01, ArrowLeftRight } from "lucide-react";
 
@@ -19,8 +19,17 @@ function Table({ data }) {
     const links = body.find(key => { });
 
 
-    const [rows, setRows] = useState(data[currentTable]); // why is this not 
-    console.log(rows);
+
+
+    const [rows, setRows] = useState(data[currentTable]); useEffect(() => { setRows(data[currentTable]) }, [data, currentTable]);
+    
+    // const tableIdIndex = [];
+    // rows.forEach(row => {
+    //     row.forEach((cell, index) => {
+    //         console.log(JSON.stringify(cell));
+    //         Object.keys(cell);
+    //     });
+    // });
 
 
     // do this by modifing the "data[currentTable]" which is an Array and should be change to a React State type variable
@@ -31,6 +40,9 @@ function Table({ data }) {
         //     rows.sort()
         // );
     }
+
+
+    // store the sizes in cookies
     const resizeColumn = (column) => {
 
     }
@@ -48,12 +60,13 @@ function Table({ data }) {
             </div>
 
             <div className="w-full rounded-lg border-solid border boder-slate-500 mt-3 overflow-hidden">
-                <div className="overflow-x-auto scrollbar-custom"> {/* Added wrapper div with overflow-x-auto */}
-                    {/* The Table should be scrollable x-wise */}
-                    <table className="max-w-full min-w-[500px] overflow-x-scroll scrollbar-custom">
+                <div className="overflow-x-auto scrollbar-custom">
+                    <table className="max-w-full min-w-[500px] overflow-x-auto scrollbar-custom">
+
+
                         <thead>
-                            <tr className="divide-x divide-solid bg-black text-left max-h-4">{headers.map((key, index) => {
-                                return <th className="w-80 max-w-80 max-h-inherit  overflow-x-scroll scrollbar-custom" key={key}><ContextMenu className="w-full py-0 px-5"
+                            <tr className="divide-x divide-solid bg-black text-center max-h-4">{headers.map((key, index) => {
+                                return <th className="w-80 max-w-80 max-h-inherit overflow-x-auto scrollbar-custom" key={key}><ContextMenu className="w-full py-0 px-5"
                                     menuGroups={[{
                                         groupName: "Sort",
                                         items: [
@@ -94,27 +107,37 @@ function Table({ data }) {
                             })}
                             </tr>
                         </thead>
+
+
+
+
+
                         <tbody>
                             {rows.map((row, index) => {
-                                return (<tr className="divide-x divide-solid max-h-4" key={`row${index}`}>
+                                return (<tr className="divide-x divide-solid max-h-4 border-t" key={`row${index}`}>
                                     {Object.keys(row).map((cell, cellIndex) => {
 
                                         // add the custom Types here
-
-
                                         switch (typeof row[cell]) {
                                             case "object":
                                             case "array":
+
+                                                // if there is a cross reference ID to another "table"
+                                                // Object.keys(row[cell]).find((cell) => {
+                                                //     // if it is the ID
+                                                //     index
+                                                //     cell.s === ""
+                                                // });
+
                                                 console.log(`Cell has a type of: ${typeof row[cell]}`);
-                                                // You could render this more appropriately depending on the structure
                                                 return (
-                                                    <td className="max-h-8 w-80 max-w-80 max-h-inherit overflow-x-scroll scrollbar-custom" key={`cell${cellIndex}`}>
+                                                    <td className="py-2 text-center text-clip overflow-x-auto scrollbar-custom" key={`cell${cellIndex}`}>
                                                         {JSON.stringify(row[cell])}
                                                     </td>
                                                 );
                                             default:
                                                 return (
-                                                    <td className="max-h-8 w-80 max-w-80 max-h-inherit overflow-x-scroll scrollbar-custom" key={`cell${cellIndex}`}>
+                                                    <td className="py-2 text-center text-clip overflow-x-auto scrollbar-custom" key={`cell${cellIndex}`}>
                                                         {row[cell]}
                                                     </td>
                                                 );

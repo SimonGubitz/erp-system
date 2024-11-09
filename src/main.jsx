@@ -5,13 +5,7 @@ import Table from './components/table';
 
 
 
-function Main() {
-
-
-    // Firebase Setup
-    const tableData = require("./assets/sample.json");
-
-
+function Main({ data }) {
     return (
         <div className="w-screen min-h-screen bg-neutral-900 text-gray-300 flex flex-col items-center">
 
@@ -34,7 +28,7 @@ function Main() {
 
 
 
-            <Table data={tableData} />
+            <Table data={data} />
 
         </div>
     );
