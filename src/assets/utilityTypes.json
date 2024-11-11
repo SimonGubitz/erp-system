@@ -1,0 +1,11 @@
+{
+    "types": [
+        "phoneNumber",
+        "email",
+        "string",
+        "number",
+        "object",
+        "date",
+        "IDS"
+    ]
+}

@@ -10,7 +10,7 @@ const EmployeeView = ({ data }) => {
     const { employeeID, name, department, position, email, phone, location, assetsAssigned } = data["employees"].find((asset) => { return asset.employeeID === params.employeeID });
 
     return (
-        <div className="w-screen min-h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
+        <div className="h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
 
             <div className="max-w-7xl flex flex-row justify-center">
 

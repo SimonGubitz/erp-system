@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ContextMenu from './ContextMenu.tsx'
-import { RotateCcw, ArrowDownAZ, ArrowUpAZ, ArrowDown01, ArrowUp01, ArrowLeftRight } from "lucide-react";
+import { RotateCcw, ArrowDownAZ, ArrowUpAZ, ArrowDown01, ArrowUp01, ArrowLeftRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+const utilityTypes = require("../assets/utilityTypes.json");
 
 
 function Table({ data }) {
@@ -46,6 +48,69 @@ function Table({ data }) {
     const resizeColumn = (column) => {
 
     }
+
+
+    const PaginationSelector = ({pages}) => {
+
+        const [currentPage, setCurrentPage] = useState(1);
+
+        const handlePageChange = (modifier) => {
+            const newPage = currentPage + modifier;
+            if (newPage > 0 && newPage <= pages.length) {
+                setCurrentPage(newPage);
+            }
+        };
+
+        return (
+            <div className="flex flex-row">
+                <button onClick={() => handlePageChange(-1)}><ChevronLeft size={20} /></button>
+                <span>{currentPage}</span>
+                <button onClick={() => handlePageChange(1)}><ChevronRight size={20} /></button>
+            </div>
+        );
+    }
+
+    const processNestedObject = (obj) => {
+        let renderableArray = [];
+        
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const value = obj[key];
+    
+                if (value) {
+                    // Check if the type of the current value matches one of the utilityTypes
+                    if (utilityTypes.types.includes(typeof value)) {
+                        switch (typeof value) {
+                            case 'string':
+                                renderableArray.push(`String: ${value}`);
+                                break;
+                            case 'number':
+                                renderableArray.push(`Number: ${value}`);
+                                break;
+                            case 'object':
+                                if (Array.isArray(value)) {
+                                    renderableArray.push(`Array of length: ${value.length}`);
+                                } else {
+                                    // If it's an object, recursively process it
+                                    renderableArray.push(...processNestedObject(value, utilityTypes));
+                                }
+                                break;
+                            case 'boolean':
+                                renderableArray.push(`Boolean: ${value}`);
+                                break;
+                            // Add other cases as necessary
+                            default:
+                                renderableArray.push(`Unknown type: ${value}`);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    
+        return renderableArray;
+    };
+
 
     return (
         <div className="max-w-7xl">
@@ -116,11 +181,8 @@ function Table({ data }) {
                             {rows.map((row, index) => {
                                 return (<tr className="divide-x divide-solid max-h-4 border-t" key={`row${index}`}>
                                     {Object.keys(row).map((cell, cellIndex) => {
-
-                                        // add the custom Types here
-                                        switch (typeof row[cell]) {
+                                        switch (row[cell]) {
                                             case "object":
-                                            case "array":
 
                                                 // if there is a cross reference ID to another "table"
                                                 // Object.keys(row[cell]).find((cell) => {
@@ -130,9 +192,28 @@ function Table({ data }) {
                                                 // });
 
                                                 console.log(`Cell has a type of: ${typeof row[cell]}`);
+
+                                                let renderableArray = [];
+
+                                                for (const key in row[cell]) {
+                                                    if (row[cell].hasOwnProperty(key)) {
+                                                        const value = row[cell][key];
+                                                        // If the value is an object, recursively process it
+                                                        if (typeof value === 'object') {
+                                                            renderableArray.push(...processNestedObject(value, utilityTypes));
+                                                        } else {
+                                                            renderableArray.push(value);
+                                                        }
+                                                    }
+                                                }
+
+
                                                 return (
                                                     <td className="py-2 text-center text-clip overflow-x-auto scrollbar-custom" key={`cell${cellIndex}`}>
-                                                        {JSON.stringify(row[cell])}
+                                                        {(Array.isArray(row[cell])) && <PaginationSelector pages={row[cell].length} />}
+                                                        {renderableArray.map((object) => {
+                                                            return (<></>)
+                                                        })}
                                                     </td>
                                                 );
                                             default:

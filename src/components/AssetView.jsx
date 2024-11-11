@@ -12,7 +12,7 @@ const AssetView = ({ data }) => {
     const { assetID, name, type, serialNumber, assignedTo, department, status, purchaseDate, warrantyExpiration, lastMaintenance, location, ipAddress, macAddress, softwareLicenses } = data["assets"].find((asset) => { return asset.assetID === params.assetID });
 
     return (
-        <div className="w-screen h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
+        <div className="h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
 
             <div className="max-w-7xl my-32 px-32 py-16 flex flex-col justify-center rounded-lg shadow-lg bg-neutral-800">
 

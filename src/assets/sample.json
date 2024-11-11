@@ -1,17 +1,44 @@
 {
   "assets": [
     {
-      "assetID": "A001",
-      "name": "Dell Latitude 7400",
-      "type": "Laptop",
+      "assetID": {
+        "assetID": "A001",
+        "type": {
+          "type": "ID",
+          "linkTo": ""
+        }
+      },
+      "name": {
+        "name": "Dell Latitude 7400",
+        "type": "string"
+      },
+      "assetType": {
+        "assetType": "Laptop",
+        "type": "string"
+      },
       "serialNumber": "DLT-7400-ABC123",
       "assignedTo": "John Doe",
       "department": {
-        "departmentName": "Sales",
-        "departmentID": "D001"
+        "departmentName": {
+          "departmentName": "Sales",
+          "type": "front"
+        },
+        "departmentID": {
+          "departmentID": "D001",
+          "type": "link"
+        }
       },
-      "status": "Active",
-      "purchaseDate": "2022-01-15",
+      "status": {
+        "status": "Active",
+        "type": {
+          "type": "boolean",
+          "other": "Inactive"
+        }
+      },
+      "purchaseDate": {
+        "purchaseDate": "2022-01-15",
+        "type": "date"
+      },
       "warrantyExpiration": "2025-01-15",
       "lastMaintenance": "2023-08-10",
       "location": "Head Office",
