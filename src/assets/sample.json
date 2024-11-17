@@ -4,8 +4,8 @@
       "assetID": {
         "assetID": "A001",
         "type": {
-          "type": "ID",
-          "linkTo": ""
+          "type": "id",
+          "linkTo": "assets/:assetID"
         }
       },
       "name": {
@@ -16,22 +16,34 @@
         "assetType": "Laptop",
         "type": "string"
       },
-      "serialNumber": "DLT-7400-ABC123",
-      "assignedTo": "John Doe",
+      "serialNumber": {
+        "serialNumber": "DLT-7400-ABC123",
+        "type": "string"
+      },
+      "assignedTo": {
+        "assignedTo": "E001",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeID"
+        }
+      },
       "department": {
-        "departmentName": {
+        "department": {
           "departmentName": "Sales",
-          "type": "front"
+          "type": "string"
         },
         "departmentID": {
           "departmentID": "D001",
-          "type": "link"
-        }
+          "type": "id",
+          "linkTo": "departments/:departmentID"
+        },
+        "type": "structuredField"
       },
       "status": {
         "status": "Active",
         "type": {
           "type": "boolean",
+          "boolValue": true,
           "other": "Inactive"
         }
       },
@@ -39,140 +51,473 @@
         "purchaseDate": "2022-01-15",
         "type": "date"
       },
-      "warrantyExpiration": "2025-01-15",
-      "lastMaintenance": "2023-08-10",
-      "location": "Head Office",
-      "ipAddress": "192.168.1.10",
-      "macAddress": "00:1A:2B:3C:4D:5E",
-      "softwareLicenses": [
+      "warrantyExpiration": {
+        "warrantyExpiration": "2025-01-15",
+        "type": "date"
+      },
+      "lastMaintenance": {
+        "lastMaintenance": "2023-08-10",
+        "type": "date"
+      },
+      "location": {
+        "location": "Head Office",
+        "type": "string"
+      },
+      "ipAddress": {
+        "ipAddress": "192.168.1.10",
+        "type": "string"
+      },
+      "macAddress": {
+        "macAddress": "00:1A:2B:3C:4D:5E",
+        "type": "string"
+      },
+      "licenses": [
         {
-          "softwareName": "Microsoft Office",
-          "licenseKey": "XXXXX-XXXXX-XXXXX-XXXXX",
-          "expirationDate": "2024-12-01",
-          "licenseID": "L001"
+          "softwareName": {
+            "softwareName": "Microsoft Office",
+            "type": "string"
+          },
+          "licenseKey": {
+            "licenseKey": "XXXXX-XXXXX-XXXXX-XXXXX",
+            "type": "string"
+          },
+          "expirationDate": {
+            "expirationDate": "2024-12-01",
+            "type": "date"
+          },
+          "licenseID": {
+            "licenseID": "L001",
+            "type": {
+              "type": "id",
+              "linkTo": "licenses/:licenseID"
+            }
+          },
+          "type": "structuredField"
         },
         {
-          "softwareName": "Adobe Photoshop",
-          "licenseKey": "AAAAA-BBBBB-CCCCC-DDDDD",
-          "expirationDate": "2025-03-15",
-          "licenseID": "L002"
+          "softwareName": {
+            "softwareName": "Adobe Photoshop",
+            "type": "string"
+          },
+          "licenseKey": {
+            "licenseKey": "AAAAA-BBBBB-CCCCC-DDDDD",
+            "type": "string"
+          },
+          "expirationDate": {
+            "expirationDate": "2025-03-15",
+            "type": "string"
+          },
+          "licenseID": {
+            "licenseID": "L002",
+            "type": {
+              "type": "id",
+              "linkTo": "licenses/:licenseID"
+            }
+          },
+          "type": "structuredField"
         }
       ]
     },
     {
-      "assetID": "A002",
-      "name": "HP ProDesk 400",
-      "type": "Desktop",
-      "serialNumber": "HPD-400-ZYX987",
-      "assignedTo": "Jane Smith",
-      "department": "Marketing",
-      "status": "Active",
-      "purchaseDate": "2021-05-20",
-      "warrantyExpiration": "2024-05-20",
-      "lastMaintenance": "2023-07-22",
-      "location": "Branch Office",
-      "ipAddress": "192.168.2.12",
-      "macAddress": "AB:CD:EF:12:34:56",
-      "softwareLicenses": [
+      "assetID": {
+        "assetID": "A002",
+        "type": {
+          "type": "id",
+          "linkTo": "assets/:assetID"
+        }
+      },
+      "name": {
+        "name": "HP ProDesk 400",
+        "type": "string"
+      },
+      "assetType": {
+        "assetType": "Desktop",
+        "type": "string"
+      },
+      "serialNumber": {
+        "serialNumber": "HPD-400-ZYX987",
+        "type": "string"
+      },
+      "assignedTo": {
+        "assignedTo": "E002",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeID"
+        }
+      },
+      "department": {
+        "department": {
+          "departmentName": "Marketing",
+          "type": "string"
+        },
+        "departmentID": {
+          "departmentID": "D002",
+          "type": "id",
+          "linkTo": "departments/:departmentID"
+        },
+        "type": "structuredField"
+      },
+      "status": {
+        "status": "Inactive",
+        "type": {
+          "type": "boolean",
+          "boolValue": false,
+          "other": "Active"
+        }
+      },
+      "purchaseDate": {
+        "purchaseDate": "2021-05-20",
+        "type": "date"
+      },
+      "warrantyExpiration": {
+        "warrantyExpiration": "2024-05-20",
+        "type": "date"
+      },
+      "lastMaintenance": {
+        "lastMaintenance": "2023-07-22",
+        "type": "date"
+      },
+      "location": {
+        "location": "Branch Office",
+        "type": "string"
+      },
+      "ipAddress": {
+        "ipAddress": "192.168.2.12",
+        "type": "string"
+      },
+      "macAddress": {
+        "macAddress": "AB:CD:EF:12:34:56",
+        "type": "string"
+      },
+      "licenses": [
         {
-          "softwareName": "Adobe Illustrator",
-          "licenseKey": "ZZZZZ-YYYYY-XXXXX-CCCCC",
-          "expirationDate": "2025-02-10",
-          "licenseID": "L003"
+          "softwareName": {
+            "softwareName": "Adobe Illustrator",
+            "type": "string"
+          },
+          "licenseKey": {
+            "licenseKey": "ZZZZZ-YYYYY-XXXXX-CCCCC",
+            "type": "string"
+          },
+          "expirationDate": {
+            "expirationDate": "2025-02-10",
+            "type": "date"
+          },
+          "licenseID": {
+            "licenseID": "L003",
+            "type": {
+              "type": "id",
+              "linkTo": "licenses/:licenseID"
+            }
+          },
+          "type": "structuredField"
         }
       ]
     }
   ],
   "employees": [
     {
-      "employeeID": "E001",
-      "name": "John Doe",
-      "department": "Sales",
-      "position": "Sales Executive",
-      "email": "john.doe@example.com",
-      "phone": "+1234567890",
-      "location": "Head Office",
-      "assetsAssigned": ["A001"]
+      "employeeID": {
+        "employeeID": "E001",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeID"
+        }
+      },
+      "name": {
+        "name": "John Doe",
+        "type": "string"
+      },
+      "department": {
+        "department": "Sales",
+        "type": "string"
+      },
+      "position": {
+        "position": "Sales Executive",
+        "type": "string"
+      },
+      "email": {
+        "email": "john.doe@example.com",
+        "type": "string"
+      },
+      "phone": {
+        "phone": "+1234567890",
+        "type": "string"
+      },
+      "location": {
+        "location": "Head Office",
+        "type": "string"
+      },
+      "assetsAssigned": [
+        {
+          "assetID": {
+            "assetID": "A001",
+            "type": {
+              "type": "id",
+              "linkTo": "assets/:assetID"
+            }
+          }
+        }
+      ]
     },
     {
-      "employeeID": "E002",
-      "name": "Jane Smith",
-      "department": "Marketing",
-      "position": "Marketing Specialist",
-      "email": "jane.smith@example.com",
-      "phone": "+0987654321",
-      "location": "Branch Office",
-      "assetsAssigned": ["A002"]
+      "employeeID": {
+        "employeeID": "E002",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeID"
+        }
+      },
+      "name": {
+        "name": "Jane Smith",
+        "type": "string"
+      },
+      "department": {
+        "department": "Marketing",
+        "type": "string"
+      },
+      "position": {
+        "position": "Marketing Specialist",
+        "type": "string"
+      },
+      "email": {
+        "email": "jane.smith@example.com",
+        "type": "string"
+      },
+      "phone": {
+        "phone": "+0987654321",
+        "type": "string"
+      },
+      "location": {
+        "location": "Branch Office",
+        "type": "string"
+      },
+      "assetsAssigned": [
+        {
+          "assetID": {
+            "assetID": "A002",
+            "type": {
+              "type": "id",
+              "linkTo": "assets/:assetID"
+            }
+          }
+        }
+      ]
     }
   ],
   "departments": [
     {
-      "departmentID": "D001",
-      "name": "Sales",
-      "location": "Head Office",
-      "budget": 150000,
-      "headOfDepartment": "John Doe",
-      "employees": ["E001"]
+      "departmentID": {
+        "departmentID": "D001",
+        "type": {
+          "type": "id",
+          "linkTo": "departments/:departmentID"
+        }
+      },
+      "name": {
+        "name": "Sales",
+        "type": "string"
+      },
+      "location": {
+        "location": "Head Office",
+        "type": "string"
+      },
+      "budget": {
+        "budget": 150000,
+        "type": "number"
+      },
+      "headOfDepartment": {
+        "employeeID": {
+          "employeeID": "E001",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeID"
+          }
+        }
+      },
+      "employees": [
+        {
+          "employeeID": {
+            "employeeID": "E001",
+            "type": {
+              "type": "id",
+              "linkTo": "employees/:employeeID"
+            }
+          }
+        }
+      ]
     },
     {
-      "departmentID": "D002",
-      "name": "Marketing",
-      "location": "Branch Office",
-      "budget": 120000,
-      "headOfDepartment": "Jane Smith",
-      "employees": ["E002"]
+      "departmentID": {
+        "departmentID": "D002",
+        "type": {
+          "type": "id",
+          "linkTo": "departments/:departmentID"
+        }
+      },
+      "name": {
+        "name": "Marketing",
+        "type": "string"
+      },
+      "location": {
+        "location": "Branch Office",
+        "type": "string"
+      },
+      "budget": {
+        "budget": 120000,
+        "type": "number"
+      },
+      "headOfDepartment": {
+        "employeeID": {
+          "employeeID": "E002",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeID"
+          }
+        }
+      },
+      "employees": [
+        {
+          "employeeID": {
+            "employeeID": "E002",
+            "type": {
+              "type": "id",
+              "linkTo": "employees/:employeeID"
+            }
+          }
+        }
+      ]
     }
   ],
   "maintenanceLogs": [
     {
-      "maintenanceID": "M001",
-      "assetID": "A001",
-      "date": "2023-08-10",
-      "performedBy": "IT Team",
-      "notes": "Battery replaced and updated to the latest OS version.",
-      "cost": 150
+      "maintenanceID": {
+        "maintenanceID": "M001",
+        "type": {
+          "type": "id",
+          "linkTo": "maintenanceLogs/:maintenanceID"
+        }
+      },
+      "assetID": {
+        "assetID": "A001",
+        "type": {
+          "type": "id",
+          "linkTo": "assets/:assetID"
+        }
+      },
+      "date": {
+        "date": "2023-08-10",
+        "type": "date"
+      },
+      "performedBy": {
+        "employeeID": "E001",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeID"
+        }
+      },
+      "details": {
+        "details": "Battery replacement and software update",
+        "type": "string"
+      }
     },
     {
-      "maintenanceID": "M002",
-      "assetID": "A002",
-      "date": "2023-07-22",
-      "performedBy": "IT Team",
-      "notes": "Hard drive cleaned and defragmented.",
-      "cost": 50
+      "maintenanceID": {
+        "maintenanceID": "M002",
+        "type": {
+          "type": "id",
+          "linkTo": "maintenanceLogs/:maintenanceID"
+        }
+      },
+      "assetID": {
+        "assetID": "A002",
+        "type": {
+          "type": "id",
+          "linkTo": "assets/:assetID"
+        }
+      },
+      "date": {
+        "date": "2023-07-22",
+        "type": "date"
+      },
+      "performedBy": {
+        "employeeID": {
+          "employeeID": "E002",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeID"
+          }
+        }
+      },
+      "details": {
+        "details": "Hard drive replacement",
+        "type": "string"
+      }
     }
   ],
   "licenses": [
     {
-      "licenseID": "L001",
-      "softwareName": "Microsoft Office",
-      "totalLicenses": 50,
-      "licensesUsed": 30,
-      "expirationDate": "2024-12-01",
-      "assignedToAssets": ["A001"]
+      "licenseID": {
+        "licenseID": "L001",
+        "type": {
+          "type": "id",
+          "linkTo": "licenses/:licenseID"
+        }
+      },
+      "softwareName": {
+        "softwareName": "Microsoft Office",
+        "type": "string"
+      },
+      "licenseKey": {
+        "licenseKey": "XXXXX-XXXXX-XXXXX-XXXXX",
+        "type": "string"
+      },
+      "expirationDate": {
+        "expirationDate": "2024-12-01",
+        "type": "date"
+      }
     },
     {
-      "licenseID": "L002",
-      "softwareName": "Adobe Photoshop",
-      "totalLicenses": 20,
-      "licensesUsed": 10,
-      "expirationDate": "2025-03-15",
-      "assignedToAssets": ["A001"]
+      "licenseID": {
+        "licenseID": "L002",
+        "type": {
+          "type": "id",
+          "linkTo": "licenses/:licenseID"
+        }
+      },
+      "softwareName": {
+        "softwareName": "Adobe Photoshop",
+        "type": "string"
+      },
+      "licenseKey": {
+        "licenseKey": "AAAAA-BBBBB-CCCCC-DDDDD",
+        "type": "string"
+      },
+      "expirationDate": {
+        "expirationDate": "2025-03-15",
+        "type": "date"
+      }
     },
     {
-      "licenseID": "L003",
-      "softwareName": "Adobe Illustrator",
-      "totalLicenses": 15,
-      "licensesUsed": 7,
-      "expirationDate": "2025-02-10",
-      "assignedToAssets": ["A002"]
-    },
-    {
-      "licenseID": "L004",
-      "softwareName": "AutoCAD",
-      "totalLicenses": 10,
-      "licensesUsed": 0,
-      "expirationDate": "2026-05-30",
-      "assignedToAssets": []
+      "licenseID": {
+        "licenseID": "L003",
+        "type": {
+          "type": "id",
+          "linkTo": "licenses/:licenseID"
+        }
+      },
+      "softwareName": {
+        "softwareName": "Adobe Illustrator",
+        "type": "string"
+      },
+      "licenseKey": {
+        "licenseKey": "ZZZZZ-YYYYY-XXXXX-CCCCC",
+        "type": "string"
+      },
+      "expirationDate": {
+        "expirationDate": "2025-02-10",
+        "type": "date"
+      }
     }
   ]
 }

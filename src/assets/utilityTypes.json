@@ -5,7 +5,9 @@
         "string",
         "number",
         "object",
+        "array",
         "date",
-        "IDS"
+        "structuredField",
+        "id"
     ]
 }

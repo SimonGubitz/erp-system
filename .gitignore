@@ -21,11 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+todo.md
 
 #firebase
 .firebaserc
-firebase.
+firebase.*
+.firebase
+.firebase/*
+
 
 
 #Temporary Files
