@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-const AssetView = ({ data }) => {
+const MaintenanceView = ({ data }) => {
 
     const [page, setPage] = useState(1);
 
     const params = useParams();
 
-    const { assetID, name, assetType, serialNumber, assignedTo, department, status, purchaseDate, warrantyExpiration, lastMaintenance, location, ipAddress, macAddress, softwareLicenses } = data["assets"].find((asset) => { return asset.assetID === params.assetID });
+    const { assetID, name, assetType, serialNumber, assignedTo, department, status, purchaseDate, warrantyExpiration, lastMaintenance, location, ipAddress, macAddress, softwareLicenses } = data["maintenanceLogs"].find((maintenance) => { return maintenance.maintenanceId.maintenanceId === params.maintenanceID });
 
     return (
         <div className="h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
@@ -76,4 +76,4 @@ const AssetView = ({ data }) => {
 }
 
 
-export default AssetView;
+export default MaintenanceView;

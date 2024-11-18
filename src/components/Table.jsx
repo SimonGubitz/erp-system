@@ -13,7 +13,6 @@ function Table({ data }) {
     const tables = Object.keys(data);
 
     const [editable, setEditable] = useState(false);
-    const [currentlyAutosaving, setCurrentlyAutosaving] = useState(true); // true for testing
     const [currentTable, setCurrentTable] = useState(tables[0]);
 
     const dataKeys = Object.keys(data[currentTable]);
@@ -24,8 +23,6 @@ function Table({ data }) {
 
     // search for assetId in other tables
     const links = body.find(key => { });
-
-
 
 
     const [rows, setRows] = useState(data[currentTable]); useEffect(() => { setRows(data[currentTable]) }, [data, currentTable]);
@@ -174,11 +171,6 @@ function Table({ data }) {
                             <PenOff size={12} strokeWidth={2} /> Stop Editing
                         </button>
 
-                        {currentlyAutosaving && <div className="absolute right-2 flex flex-row items-center">
-                            <TailSpin visible={true} width="12" color="#fff" strokeWidth={3} ariaLabel="tail-spin-loading" radius="1" wrapperStyle={{}} wrapperClass="" />
-                            <span className="ml-1">Saving...</span>
-                        </div>}
-
                     </div>}
                     <table className="max-w-full min-w-[500px] overflow-x-auto scrollbar-custom">
                         <thead>
@@ -250,7 +242,7 @@ function Table({ data }) {
                                 return (<tr className="divide-x divide-solid max-h-4 border-t" key={`row${index}`}>
                                     {Object.keys(row).map((cell, cellIndex) => {
                                         return (
-                                            <td className="py-2 text-center text-clip overflow-x-auto scrollbar-custom" key={`cell${cellIndex}`}>
+                                            <td className="p-2 text-center text-clip overflow-x-auto scrollbar-custom" key={`cell${cellIndex}`}>
                                                 <FormatedUtilityTypes data={row[cell]} editable={editable} />
                                             </td>
                                         );

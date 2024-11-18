@@ -8,7 +8,7 @@
 
 import React, { useRef, useState } from "react";
 import { Link } from 'react-router-dom';
-import { SquareArrowOutUpRight, ChevronLeft, ChevronRight, SpaceIcon } from "lucide-react";
+import { SquareArrowOutUpRight, ChevronLeft, ChevronRight, SpaceIcon, CalendarFold } from "lucide-react";
 import Switch from './switch.jsx';
 // import utilityTypes from '../assets/utilityTypes.json';
 
@@ -57,8 +57,8 @@ const stringToBoolean = (stringValue: string) => {
     }
 }
 
-const renderLink = ({link, content} : {link: string, content: string}) : React.ReactNode => {
-        return <Link to={link} className="flex flex-row justify-evenly items-center">
+const renderLink = ({ link, content }: { link: string, content: string }): React.ReactNode => {
+    return <Link to={link} className="flex flex-row justify-evenly items-center">
         {content}
         <SquareArrowOutUpRight size={16} />
     </Link>
@@ -77,6 +77,7 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
 
     switch (cellType) {
         case 'id':
+            console.log(cellName);
             returnValue = <div className="text-sm text-sky-700 hover:text-blue-800 hover:underline">
                 <Link to={"./" + data["type"]["linkTo"].split("/")[0] + "/" + cellName} className="flex flex-row justify-evenly items-center">
                     {cellName}
@@ -84,11 +85,14 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
                 </Link>
             </div>
             break;
-        case 'date':
-            returnValue = <div className="text-sm">{cellName}<CalendarSelectionNode data={cellName} /></div>
-            break;
         case 'string':
             returnValue = <div className="text-sm">{cellName}</div>
+            break;
+        case 'email':
+            returnValue = <div className="text-sm text-sky-700 hover:text-blue-800 hover:underline"><a href={`mailto:${cellName}`}>{cellName}</a></div>
+            break;
+        case 'phoneNumber':
+            returnValue = <div className="text-sm text-sky-700 hover:text-blue-800 hover:underline"><a href={`tel:${cellName}`}>{cellName}</a></div>
             break;
         case 'structuredField':
             let values = [{}];
@@ -99,11 +103,19 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
                 values.push(newValue);
             });
 
-            returnValue = <div>
-                {values.map((element, index : number) : React.ReactNode => {
+
+            returnValue = <div className="divide-y divide-neutral-600">
+                {values.map((element, index: number): React.ReactNode => {
+
+                    const keys = Object.keys(element);
+                    if (keys.length === 0) return <></>;
+                    const key = keys[0].toString();
+                    const value = element[key];
+                    console.log(key);
+
                     return <div className="flex flex-row items-center justify-between text-xs" key={index}>
-                        <span>{JSON.stringify(element)}</span>
-                        <div className="text-xs"></div>
+                        <span>{(key[0].toUpperCase() + key.substring(1)).match(/[A-Z][a-z]*|[A-Z]+/g)!.join(" ")}</span>
+                        <div className="text-xs ml-2">{value}</div>
                     </div>;
                 })}
             </div>
@@ -115,7 +127,7 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
                     break;
                 }
                 returnValue = <div className="flex flex-col">
-                    <PaginationSelector className="text-xs" pages={data.length} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                    {data.length > 1 && <PaginationSelector className="text-xs" pages={data.length} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
 
                     {/* ↓ Send it in again, but check if it is not just another Array */}
                     <FormatedUtilityTypes data={data[currentPage - 1]} editable={editable} isNestedArray={true} />
@@ -133,6 +145,9 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
             break;
         case 'number':
             returnValue = <div className="text-sm">{cellName.toLocaleString()}</div>
+            break;
+        case 'date':
+            returnValue = <div className="flex flex-row items-center justify-center text-sm"><CalendarFold size={16} />{new Date(Date.parse(cellName.toString())).toLocaleDateString()}</div>
             break;
         default:
             returnValue = <>{cellName}</>
@@ -177,25 +192,4 @@ const PaginationSelector = ({ pages, className = "", currentPage, setCurrentPage
         </div>
     );
 }
-
-
-const CalendarSelectionNode: React.FC<{ data: Field<any> }> = (data) => {
-
-    const [showCalendar, setShowCalendar] = useState(false);
-
-    return (showCalendar && <div className="rounder-md border-slate-500 flex flex-col divide-y">
-        <h4>Calendar</h4>
-        <div>
-            <div className="flex flex-row">
-                <span>M</span>
-                <span>T</span>
-                <span>W</span>
-                <span>T</span>
-                <span>F</span>
-                <span>S</span>
-                <span>S</span>
-            </div>
-        </div>
-    </div>);
-};
 

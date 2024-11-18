@@ -1,11 +1,11 @@
 {
   "assets": [
     {
-      "assetID": {
-        "assetID": "A001",
+      "assetId": {
+        "assetId": "A001",
         "type": {
           "type": "id",
-          "linkTo": "assets/:assetID"
+          "linkTo": "assets/:assetId"
         }
       },
       "name": {
@@ -24,27 +24,27 @@
         "assignedTo": "E001",
         "type": {
           "type": "id",
-          "linkTo": "employees/:employeeID"
+          "linkTo": "employees/:employeeId"
         }
       },
       "department": {
         "department": {
-          "departmentName": "Sales",
+          "name": "Sales",
           "type": "string"
         },
-        "departmentID": {
-          "departmentID": "D001",
+        "departmentId": {
+          "departmentId": "D001",
           "type": "id",
-          "linkTo": "departments/:departmentID"
+          "linkTo": "departments/:departmentId"
         },
         "type": "structuredField"
       },
       "status": {
-        "status": "Active",
+        "status": "Aktiv",
         "type": {
           "type": "boolean",
           "boolValue": true,
-          "other": "Inactive"
+          "other": "Inaktiv"
         }
       },
       "purchaseDate": {
@@ -60,7 +60,7 @@
         "type": "date"
       },
       "location": {
-        "location": "Head Office",
+        "location": "Hauptsitz",
         "type": "string"
       },
       "ipAddress": {
@@ -85,11 +85,11 @@
             "expirationDate": "2024-12-01",
             "type": "date"
           },
-          "licenseID": {
-            "licenseID": "L001",
+          "licenseId": {
+            "licenseId": "L001",
             "type": {
               "type": "id",
-              "linkTo": "licenses/:licenseID"
+              "linkTo": "licenses/:licenseId"
             }
           },
           "type": "structuredField"
@@ -107,11 +107,11 @@
             "expirationDate": "2025-03-15",
             "type": "string"
           },
-          "licenseID": {
-            "licenseID": "L002",
+          "licenseId": {
+            "licenseId": "L002",
             "type": {
               "type": "id",
-              "linkTo": "licenses/:licenseID"
+              "linkTo": "licenses/:licenseId"
             }
           },
           "type": "structuredField"
@@ -119,11 +119,11 @@
       ]
     },
     {
-      "assetID": {
-        "assetID": "A002",
+      "assetId": {
+        "assetId": "A002",
         "type": {
           "type": "id",
-          "linkTo": "assets/:assetID"
+          "linkTo": "assets/:assetId"
         }
       },
       "name": {
@@ -142,27 +142,30 @@
         "assignedTo": "E002",
         "type": {
           "type": "id",
-          "linkTo": "employees/:employeeID"
+          "linkTo": "employees/:employeeId"
         }
       },
       "department": {
         "department": {
-          "departmentName": "Marketing",
-          "type": "string"
+          "departmentName": "D003",
+          "type": {
+            "type": "id",
+            "linkTo": "departments/:departmentId"
+          }
         },
-        "departmentID": {
-          "departmentID": "D002",
+        "departmentId": {
+          "departmentId": "D002",
           "type": "id",
-          "linkTo": "departments/:departmentID"
+          "linkTo": "departments/:departmentId"
         },
         "type": "structuredField"
       },
       "status": {
-        "status": "Inactive",
+        "status": "Inaktiv",
         "type": {
           "type": "boolean",
           "boolValue": false,
-          "other": "Active"
+          "other": "Aktiv"
         }
       },
       "purchaseDate": {
@@ -203,11 +206,11 @@
             "expirationDate": "2025-02-10",
             "type": "date"
           },
-          "licenseID": {
-            "licenseID": "L003",
+          "licenseId": {
+            "licenseId": "L003",
             "type": {
               "type": "id",
-              "linkTo": "licenses/:licenseID"
+              "linkTo": "licenses/:licenseId"
             }
           },
           "type": "structuredField"
@@ -217,55 +220,56 @@
   ],
   "employees": [
     {
-      "employeeID": {
-        "employeeID": "E001",
+      "employeeId": {
+        "employeeId": "E001",
         "type": {
           "type": "id",
-          "linkTo": "employees/:employeeID"
+          "linkTo": "employees/:employeeId"
         }
       },
       "name": {
-        "name": "John Doe",
+        "name": "Max Musterman",
         "type": "string"
       },
       "department": {
-        "department": "Sales",
-        "type": "string"
+        "department": "D001",
+        "type": {
+          "type": "id",
+          "linkTo": "departments/:departmentId"
+        }
       },
       "position": {
-        "position": "Sales Executive",
+        "position": "Verkaufsleiter",
         "type": "string"
       },
       "email": {
         "email": "john.doe@example.com",
-        "type": "string"
+        "type": "email"
       },
       "phone": {
         "phone": "+1234567890",
-        "type": "string"
+        "type": "phoneNumber"
       },
       "location": {
-        "location": "Head Office",
+        "location": "Hauptsitz",
         "type": "string"
       },
       "assetsAssigned": [
         {
-          "assetID": {
-            "assetID": "A001",
-            "type": {
-              "type": "id",
-              "linkTo": "assets/:assetID"
-            }
+          "assetsAssigned": "A001",
+          "type": {
+            "type": "id",
+            "linkTo": "assets/:assetId"
           }
         }
       ]
     },
     {
-      "employeeID": {
-        "employeeID": "E002",
+      "employeeId": {
+        "employeeId": "E002",
         "type": {
           "type": "id",
-          "linkTo": "employees/:employeeID"
+          "linkTo": "employees/:employeeId"
         }
       },
       "name": {
@@ -277,16 +281,16 @@
         "type": "string"
       },
       "position": {
-        "position": "Marketing Specialist",
+        "position": "Marketingspezialist",
         "type": "string"
       },
       "email": {
         "email": "jane.smith@example.com",
-        "type": "string"
+        "type": "email"
       },
       "phone": {
         "phone": "+0987654321",
-        "type": "string"
+        "type": "phoneNumber"
       },
       "location": {
         "location": "Branch Office",
@@ -294,12 +298,10 @@
       },
       "assetsAssigned": [
         {
-          "assetID": {
-            "assetID": "A002",
-            "type": {
-              "type": "id",
-              "linkTo": "assets/:assetID"
-            }
+          "assetsAssigned": "A002",
+          "type": {
+            "type": "id",
+            "linkTo": "assets/:assetId"
           }
         }
       ]
@@ -307,19 +309,19 @@
   ],
   "departments": [
     {
-      "departmentID": {
-        "departmentID": "D001",
+      "departmentId": {
+        "departmentId": "D001",
         "type": {
           "type": "id",
-          "linkTo": "departments/:departmentID"
+          "linkTo": "departments/:departmentId"
         }
       },
       "name": {
-        "name": "Sales",
+        "name": "Verkauf",
         "type": "string"
       },
       "location": {
-        "location": "Head Office",
+        "location": "Hauptsitz",
         "type": "string"
       },
       "budget": {
@@ -327,32 +329,65 @@
         "type": "number"
       },
       "headOfDepartment": {
-        "employeeID": {
-          "employeeID": "E001",
-          "type": {
-            "type": "id",
-            "linkTo": "employees/:employeeID"
-          }
+        "employeeId": "E001",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeId"
         }
       },
       "employees": [
         {
-          "employeeID": {
-            "employeeID": "E001",
-            "type": {
-              "type": "id",
-              "linkTo": "employees/:employeeID"
-            }
+          "employee": "E001",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeId"
           }
         }
       ]
     },
     {
-      "departmentID": {
-        "departmentID": "D002",
+      "departmentId": {
+        "departmentId": "D002",
         "type": {
           "type": "id",
-          "linkTo": "departments/:departmentID"
+          "linkTo": "departments/:departmentId"
+        }
+      },
+      "name": {
+        "name": "Papierdruck",
+        "type": "string"
+      },
+      "location": {
+        "location": "Hauptsitz",
+        "type": "string"
+      },
+      "budget": {
+        "budget": 150000,
+        "type": "number"
+      },
+      "headOfDepartment": {
+        "employeeId": "E001",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeId"
+        }
+      },
+      "employees": [
+        {
+          "employee": "E001",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeId"
+          }
+        }
+      ]
+    },
+    {
+      "departmentId": {
+        "departmentId": "D003",
+        "type": {
+          "type": "id",
+          "linkTo": "departments/:departmentId"
         }
       },
       "name": {
@@ -360,7 +395,7 @@
         "type": "string"
       },
       "location": {
-        "location": "Branch Office",
+        "location": "Zweigstelle",
         "type": "string"
       },
       "budget": {
@@ -368,22 +403,18 @@
         "type": "number"
       },
       "headOfDepartment": {
-        "employeeID": {
-          "employeeID": "E002",
-          "type": {
-            "type": "id",
-            "linkTo": "employees/:employeeID"
-          }
+        "headOfDepartment": "E002",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeId"
         }
       },
       "employees": [
         {
-          "employeeID": {
-            "employeeID": "E002",
-            "type": {
-              "type": "id",
-              "linkTo": "employees/:employeeID"
-            }
+          "employee": "E002",
+          "type": {
+            "type": "id",
+            "linkTo": "employees/:employeeId"
           }
         }
       ]
@@ -391,18 +422,18 @@
   ],
   "maintenanceLogs": [
     {
-      "maintenanceID": {
-        "maintenanceID": "M001",
+      "maintenanceId": {
+        "maintenanceId": "M001",
         "type": {
           "type": "id",
-          "linkTo": "maintenanceLogs/:maintenanceID"
+          "linkTo": "maintenanceLogs/:maintenanceId"
         }
       },
-      "assetID": {
-        "assetID": "A001",
+      "assetId": {
+        "assetId": "A001",
         "type": {
           "type": "id",
-          "linkTo": "assets/:assetID"
+          "linkTo": "assets/:assetId"
         }
       },
       "date": {
@@ -410,10 +441,10 @@
         "type": "date"
       },
       "performedBy": {
-        "employeeID": "E001",
+        "performedBy": "E001",
         "type": {
           "type": "id",
-          "linkTo": "employees/:employeeID"
+          "linkTo": "employees/:employeeId"
         }
       },
       "details": {
@@ -422,18 +453,18 @@
       }
     },
     {
-      "maintenanceID": {
-        "maintenanceID": "M002",
+      "maintenanceId": {
+        "maintenanceId": "M002",
         "type": {
           "type": "id",
-          "linkTo": "maintenanceLogs/:maintenanceID"
+          "linkTo": "maintenanceLogs/:maintenanceId"
         }
       },
-      "assetID": {
-        "assetID": "A002",
+      "assetId": {
+        "assetId": "A002",
         "type": {
           "type": "id",
-          "linkTo": "assets/:assetID"
+          "linkTo": "assets/:assetId"
         }
       },
       "date": {
@@ -441,12 +472,10 @@
         "type": "date"
       },
       "performedBy": {
-        "employeeID": {
-          "employeeID": "E002",
-          "type": {
-            "type": "id",
-            "linkTo": "employees/:employeeID"
-          }
+        "performedBy": "E002",
+        "type": {
+          "type": "id",
+          "linkTo": "employees/:employeeId"
         }
       },
       "details": {
@@ -457,11 +486,11 @@
   ],
   "licenses": [
     {
-      "licenseID": {
-        "licenseID": "L001",
+      "licenseId": {
+        "licenseId": "L001",
         "type": {
           "type": "id",
-          "linkTo": "licenses/:licenseID"
+          "linkTo": "licenses/:licenseId"
         }
       },
       "softwareName": {
@@ -478,11 +507,11 @@
       }
     },
     {
-      "licenseID": {
-        "licenseID": "L002",
+      "licenseId": {
+        "licenseId": "L002",
         "type": {
           "type": "id",
-          "linkTo": "licenses/:licenseID"
+          "linkTo": "licenses/:licenseId"
         }
       },
       "softwareName": {
@@ -499,11 +528,11 @@
       }
     },
     {
-      "licenseID": {
-        "licenseID": "L003",
+      "licenseId": {
+        "licenseId": "L003",
         "type": {
           "type": "id",
-          "linkTo": "licenses/:licenseID"
+          "linkTo": "licenses/:licenseId"
         }
       },
       "softwareName": {

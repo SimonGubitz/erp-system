@@ -7,17 +7,17 @@ import { FormatedUtilityTypes } from "./customTypes.tsx";
 const AssetView = ({ data }) => {
     const [page, setPage] = useState(1);
     const params = useParams();
-    const { assetID, name, assetType, serialNumber, assignedTo, department, status, purchaseDate, warrantyExpiration, lastMaintenance, location, ipAddress, macAddress, licenses } = data["assets"].find((asset) => { return asset.assetID.assetID === params.assetID });
+    const { assetId, name, assetType, serialNumber, assignedTo, department, status, purchaseDate, warrantyExpiration, lastMaintenance, location, ipAddress, macAddress, licenses } = data["assets"].find((asset) => { return asset.assetId.assetId === params.assetID });
 
     console.log(licenses);
 
     return (
         <div className="h-screen bg-neutral-900 text-gray-300 flex flex-col items-center mx-auto">
 
-            <div className="max-w-7xl my-32 px-32 py-16 flex flex-col justify-center rounded-lg shadow-lg bg-neutral-800">
+            <div className="relative max-w-7xl my-32 px-32 py-16 flex flex-col justify-center rounded-lg shadow-lg bg-neutral-800">
 
                 
-                <a href="../../"><button className="rounded-full flex items-center hover:bg-neutral-400/75 p-2"><CircleArrowLeft /></button></a>
+                <a href="../../"><button className="absolute left-4 top-4 rounded-full flex items-center hover:bg-neutral-400/75 p-2"><CircleArrowLeft /></button></a>
 
 
 
@@ -28,7 +28,7 @@ const AssetView = ({ data }) => {
                     <div>
                         <div className="text-neutral-500 flex flex-row">
                             <FormatedUtilityTypes data={assetType} /><span>·</span>
-                            <FormatedUtilityTypes data={assetID} /><span>·</span>
+                            <FormatedUtilityTypes data={assetId} /><span>·</span>
                             <FormatedUtilityTypes data={serialNumber} />
                         </div>
                         <h1 className="text-4xl">{name.name}</h1>
