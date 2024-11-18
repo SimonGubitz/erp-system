@@ -46,9 +46,12 @@ const EmployeeView = ({ data }) => {
 
                     <div>
                         <h4>Details about the employee</h4>
-
                         <div className="divide-y divide-neutral-700">
-                            
+                            <div className="flex flex-row justify-between text-sm"><span>Department:</span><FormatedUtilityTypes data={department} /></div>
+                            <div className="flex flex-row justify-between text-sm"><span>Position:</span><FormatedUtilityTypes data={position} /></div>
+                            <div className="flex flex-row justify-between text-sm"><span>Phone:</span><FormatedUtilityTypes data={phone} /></div>
+                            <div className="flex flex-row justify-between text-sm"><span>Location:</span><FormatedUtilityTypes data={location} /></div>
+                            <div className="flex flex-row justify-between text-sm"><span>Assets Assigned:</span><FormatedUtilityTypes data={assetsAssigned} /></div>
                         </div>
                     </div>
                 </div>

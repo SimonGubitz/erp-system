@@ -41,7 +41,6 @@ const AssetView = ({ data }) => {
                     <h4>Further details about the device</h4>
 
                     <div className="divide-y divide-neutral-700">
-
                         <div className="flex flex-row justify-between text-sm"><span>Assigned To:</span><FormatedUtilityTypes data={assignedTo} /></div>
                         <div className="flex flex-row justify-between text-sm"><span>Status:</span><FormatedUtilityTypes data={status} /></div>
                         <div className="flex flex-row justify-between text-sm"><span>Purchase Date:</span><FormatedUtilityTypes data={purchaseDate} /></div>
