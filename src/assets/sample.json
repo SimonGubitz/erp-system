@@ -147,10 +147,10 @@
       },
       "department": {
         "department": {
-          "departmentName": "D003",
+          "department": "Marketing",
           "type": {
             "type": "id",
-            "linkTo": "departments/:departmentId"
+            "linkTo": "departments/D003"
           }
         },
         "departmentId": {
@@ -232,10 +232,10 @@
         "type": "string"
       },
       "department": {
-        "department": "D001",
+        "department": "Verkauf",
         "type": {
           "type": "id",
-          "linkTo": "departments/:departmentId"
+          "linkTo": "departments/001"
         }
       },
       "position": {

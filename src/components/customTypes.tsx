@@ -79,7 +79,13 @@ const FormatedUtilityTypes = ({ data, editable, isNestedArray = false }: { data:
         case 'id':
             console.log(cellName);
             returnValue = <div className="text-sm text-sky-700 hover:text-blue-800 hover:underline">
-                <Link to={"./" + data["type"]["linkTo"].split("/")[0] + "/" + cellName} className="flex flex-row justify-evenly items-center">
+                <Link
+                    to={
+                        data["type"]["linkTo"].includes(":")
+                            ? "./" + data["type"]["linkTo"].split("/")[0] + "/" + cellName
+                            : "./" + data["type"]["linkTo"]
+                     } className="flex flex-row justify-evenly items-center"
+                >
                     {cellName}
                     <SquareArrowOutUpRight size={16} />
                 </Link>

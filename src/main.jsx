@@ -33,10 +33,9 @@ function Main({ data }) {
 
 
             <p className="text-sm text-zinc-400 mt-20">
-                The table has cells, which are keyboard controllable, and the headers / header-row has a custom contextMenu/dropdown. Furthermore, the Data is dynamically rendered based on only this data: 
-                <a className="text-sky-700 hover:text-blue-800 hover:underline" href="https://github.com/SimonGubitz/erp-system/blob/main/src/assets/sample.json">JSON</a>
-                <br/>
-                Each ID is detected, and has links to a custom page with more details about the thing that was clicked on.
+                Die Überschriften/Kopfzeilen haben ein benutzerdefiniertes Kontextmenü/Dropdown. Darüber hinaus werden die Daten dynamisch nur auf Grundlage dieses Daten gerendert:
+                <a className="text-sky-700 hover:text-blue-800 hover:underline" href="https://github.com/SimonGubitz/erp-system/blob/main/src/assets/sample.json">JSON</a><br/>
+                Jede ID wird erkannt und enthält Links zu einer benutzerdefinierten Seite mit weiteren Details zu dem angeklickten Element.
             </p>
 
         </div>

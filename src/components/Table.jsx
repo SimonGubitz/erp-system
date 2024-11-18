@@ -17,24 +17,13 @@ function Table({ data }) {
 
     const dataKeys = Object.keys(data[currentTable]);
     const headers = Object.keys(data[currentTable][dataKeys[0]]);
+
     const columns = [...Object.keys(data[currentTable][dataKeys[0]])];
-
     const body = [...Object.keys(data[currentTable])];
-
-    // search for assetId in other tables
-    const links = body.find(key => { });
-
 
     const [rows, setRows] = useState(data[currentTable]); useEffect(() => { setRows(data[currentTable]) }, [data, currentTable]);
 
-    // const tableIdIndex = [];
-    // rows.forEach(row => {
-    //     row.forEach((cell, index) => {
-    //         console.log(JSON.stringify(cell));
-    //         Object.keys(cell);
-    //     });
-    // });
-
+  
 
     // do this by modifing the "data[currentTable]" which is an Array and should be change to a React State type variable
     // TODO: Add the sort symbol next to the header
@@ -48,22 +37,6 @@ function Table({ data }) {
         //     rows.sort()
         // );
     }
-
-
-    // store the sizes in cookies
-    const resizeColumn = (column) => {
-
-        console.log("resizeColumn");
-
-    }
-
-
-    // Keyboard Navigation on the Cells
-    useEffect(() => {
-
-    }, []);
-
-
 
     const processNestedObject = (obj, utilityTypes, referenceData) => {
         let renderableArray = [];
@@ -187,46 +160,9 @@ function Table({ data }) {
                                                 icon: <ArrowUpAZ size={16} />,
                                                 label: "Sort Alphabetically Reverse",
                                                 action: () => { sortByColumn(index) },
-                                            }, {
-                                                icon: <ArrowDown01 size={16} />,
-                                                label: "Sort Numerically",
-                                                action: () => { sortByColumn(index) },
-                                            }, {
-                                                icon: <ArrowUp01 size={16} />,
-                                                label: "Sort Numerical Reverse",
-                                                action: () => { sortByColumn(index) },
-                                            },
+                                            }
                                         ],
-                                    }, {
-                                        groupName: "Resize",
-                                        items: [
-                                            {
-                                                icon: <RotateCcw size={16} />,
-                                                label: "Return to default sizing",
-                                                action: () => { resizeColumn(index) },
-                                            }, {
-                                                icon: <ArrowLeftRight size={16} />,
-                                                label: "Resize to fitting",
-                                                action: () => { resizeColumn(index) },
-                                            }
-                                        ]
-                                    }, /*{
-                                        // only show this if there is a table with that name
-                                        // would only work with more consistent header naming
-                                        // Object.keys(data).includes(key.split(" ").join(""));
-                                        // 
-                                        // const tableKey = (key[0].toLowerCase() + key.substring(1)) + "s";
-                                        // Object.keys(data).includes() ? setCurrentTable(tables[tableKey]);
-                                        groupName: "View",
-                                        items: [
-                                            {
-                                                icon: <FolderSymlink size={16} />,
-                                                label: "Go to this Table",
-                                                action: () => 
-                                                    {setCurrentTable()},
-                                            }
-                                        ]
-                                    }*/]}>
+                                    }]}>
                                     {(key[0].toUpperCase() + key.substring(1)).match(/[A-Z][a-z]+/g).join(" ")}
                                 </ContextMenu></th>
                             })}
