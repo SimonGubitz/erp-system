@@ -33,7 +33,7 @@ function Main({ data }) {
 
 
             <p className="text-sm text-zinc-400 mt-20">
-                Die Überschriften/Kopfzeilen haben ein benutzerdefiniertes Kontextmenü/Dropdown. Darüber hinaus werden die Daten dynamisch nur auf Grundlage dieses Daten gerendert:
+                Die Daten werden dynamisch nur auf Grundlage dieses Daten gerendert:
                 <a className="text-sky-700 hover:text-blue-800 hover:underline" href="https://github.com/SimonGubitz/erp-system/blob/main/src/assets/sample.json">JSON</a><br/>
                 Jede ID wird erkannt und enthält Links zu einer benutzerdefinierten Seite mit weiteren Details zu dem angeklickten Element.
             </p>
